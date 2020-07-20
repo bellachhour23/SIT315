@@ -1,0 +1,32 @@
+int num = 0;
+
+void setup()
+{
+  Serial.begin(9600);
+  
+  pinMode(13, OUTPUT); //led pin
+  pinMode(2, INPUT); //sensor pin 
+  
+  attachInterrupt(0, interrStat, RISING);
+}
+
+void loop()
+{
+  num = digitalRead(2);
+  if (num == LOW) 
+  {
+    digitalWrite(13, LOW);
+    {
+      Serial.println("Inactive");
+    }
+  }
+  delay(700);
+}
+
+void interrStat()
+{
+  digitalWrite(13, HIGH);
+    {
+      Serial.println("Active");
+    }
+}
